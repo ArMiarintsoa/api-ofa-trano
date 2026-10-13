@@ -1,0 +1,17 @@
+﻿services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ofatrano_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - madarent_models:/app/models:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+volumes:
+  madarent_models:
+    external: true
